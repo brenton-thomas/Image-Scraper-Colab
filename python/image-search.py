@@ -223,5 +223,5 @@ with gr.Blocks() as selector:
     save_btn.click(save_images,None,[input_gallery,output_gallery,status_box])
         
 if __name__ == "__main__":
-    selector.launch()
+    selector.launch(share=True)
 
