@@ -40,6 +40,8 @@ save_path = sys.argv[1]
 #Not a lot that can be cone about it. The gradio code is serializing things to base64 and the monkey patch
 #provided to speed thinsg up makes negligable improvements
 
+#Full images are saved in either case
+
 use_thumbnails=True
 if len(sys.argv) == 3 :
     if sys.argv[2].lower() == 'use_raw_images':
@@ -501,5 +503,5 @@ with gr.Blocks() as selector:
     save_btn.click(save_images,None,[input_gallery,output_gallery,status_box])
         
 if __name__ == "__main__":
-    selector.launch()
-    #selector.launch(share=True)
+    #selector.launch()
+    selector.launch(share=True)
