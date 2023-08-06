@@ -36,10 +36,14 @@ from pprint import pprint
 
 save_path = sys.argv[1]
 
-use_thumbnails=False
+#not using thumbnails is extremely slow.  Much better image quality, but takes a minute ot so to load files.
+#Not a lot that can be cone about it. The gradio code is serializing things to base64 and the monkey patch
+#provided to speed thinsg up makes negligable improvements
+
+use_thumbnails=True
 if len(sys.argv) == 3 :
-    if sys.argv[2].lower() == 'use_thumbnails':
-        use_thumbnails=True
+    if sys.argv[2].lower() == 'use_raw_images':
+        use_thumbnails=False
 
 search_term = "random stuff"
 #min_width=1024
@@ -479,7 +483,7 @@ with gr.Blocks() as selector:
             with gr.Row():
                 
                 with gr.Row():
-                    engine_btn = gr.Radio(["Google","Bing"],container=False,value=search_engine,interactive=True)
+                    engine_btn = gr.Radio(["Bing","Google"],container=False,value=search_engine,interactive=True)
                     status_box = gr.Markdown("## None selected")
                     
             save_btn = gr.Button(value="Save") 
