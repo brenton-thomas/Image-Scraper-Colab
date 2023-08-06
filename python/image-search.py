@@ -206,6 +206,7 @@ with gr.Blocks() as selector:
             elems=page.cssselect(".PNCib.MSM1fd.BUooTd") 
             for x in elems:
                 xid=x.attrib["data-id"]
+                #DEBUG(xid)
                 data={
                         'img':None,
                         'turl':urls[xid]['turl'], 
@@ -215,7 +216,7 @@ with gr.Blocks() as selector:
                 image_data.append(data)
                 count=count+1              
                 if count == num_images: break            
-               
+                #DEBUG(data)       
         except Exception:
             traceback.print_exc()       
          
